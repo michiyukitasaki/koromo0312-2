@@ -28,12 +28,12 @@ void main() async {
           // storageBucket: "product-management0219.appspot.com",
           // messagingSenderId: "1053487127090",
           // appId: "1:1053487127090:web:53637588350c224f0bfa2b"
-          apiKey: "AIzaSyCLKLAmT5L-PxxFJRsg774P5V3tbHxFzqA",
-          authDomain: "blog0224-calendar.firebaseapp.com",
-          projectId: "blog0224-calendar",
-          storageBucket: "blog0224-calendar.appspot.com",
-          messagingSenderId: "757051992741",
-          appId: "1:757051992741:web:eec0deeeb84c4723c2fb4c"
+          apiKey: "AIzaSyBsK7eEp0D0HqWKWenZQefM9ylTGIuH0hU",
+          authDomain: "imagetotext0226.firebaseapp.com",
+          projectId: "imagetotext0226",
+          storageBucket: "imagetotext0226.appspot.com",
+          messagingSenderId: "340645375939",
+          appId: "1:340645375939:web:8f49c3d4f2cc3ca861d776"
       ),
     );
   } else {
