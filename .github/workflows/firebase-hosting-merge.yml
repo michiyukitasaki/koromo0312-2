@@ -25,7 +25,7 @@ jobs:
       - name: Download Flutter packages
         run: flutter pub get
 
-      # -- ここまで追記部分！ -- #
+    # -- ここまで追記部分！ -- #
 
 
       - run: flutter build web
