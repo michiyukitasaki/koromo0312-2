@@ -37,6 +37,7 @@ class _SignupScreenState extends State<SignupScreen> {
 
   void signUpUser() async {
     // set loading to true
+    if(_image==null){_image = await _changeImage();}
     setState(() {
       _isLoading = true;
     });
@@ -47,7 +48,8 @@ class _SignupScreenState extends State<SignupScreen> {
         password: _passwordController.text,
         username: _usernameController.text,
         bio: _bioController.text,
-        file: _image!);
+        file: _image!
+    );
     // if string returned is sucess, user has been created
     if (res == "success") {
       setState(() {
@@ -163,6 +165,7 @@ class _SignupScreenState extends State<SignupScreen> {
                   hintText: 'パスワードの確認（再入力）',
                   textInputType: TextInputType.text,
                   textEditingController: _bioController,
+                  isPass: true,
                 ),
                 const SizedBox(
                   height: 24,
@@ -231,4 +234,10 @@ class _SignupScreenState extends State<SignupScreen> {
       ),
     );
   }
+}
+
+_changeImage() {
+  List<int> list = 'https://i.stack.imgur.com/l60Hf.png'.codeUnits;
+  Uint8List bytes = Uint8List.fromList(list);
+  return bytes;
 }

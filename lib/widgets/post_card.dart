@@ -85,77 +85,85 @@ class _PostCardState extends State<PostCard> {
               vertical: 4,
               horizontal: 16,
             ).copyWith(right: 0),
-            child: Row(
-              children: <Widget>[
-                // CircleAvatar(
-                //   radius: 16,
-                //   backgroundImage: NetworkImage(
-                //     widget.snap['profImage'].toString(),
-                //   ),
-                // ),
-                Expanded(
-                  child: Padding(
-                    padding: const EdgeInsets.only(
-                      left: 8,
-                    ),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        Text(
-                          widget.snap['username'].toString(),
-                          style: const TextStyle(
-                            fontWeight: FontWeight.bold,
-                          ),
+            child: Column(
+              children: [
+                Row(
+                  children: <Widget>[
+                    // CircleAvatar(
+                    //   radius: 16,
+                    //   backgroundImage: NetworkImage(
+                    //     widget.snap['profImage'].toString(),
+                    //   ),
+                    // ),
+                    Expanded(
+                      child: Padding(
+                        padding: const EdgeInsets.only(
+                          left: 8,
                         ),
-                      ],
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            Text(
+                              widget.snap['username'].toString(),
+                              style: const TextStyle(
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
                     ),
-                  ),
-                ),
-                widget.snap['uid'].toString() == user.uid
-                    ? IconButton(
-                        onPressed: () {
-                          showDialog(
-                            useRootNavigator: false,
-                            context: context,
-                            builder: (context) {
-                              return Dialog(
-                                child: ListView(
-                                    padding: const EdgeInsets.symmetric(
-                                        vertical: 16),
-                                    shrinkWrap: true,
-                                    children: [
-                                      'Delete',
-                                    ]
-                                        .map(
-                                          (e) => InkWell(
-                                              child: Container(
-                                                padding:
-                                                    const EdgeInsets.symmetric(
-                                                        vertical: 12,
-                                                        horizontal: 16),
-                                                child: Text(e),
-                                              ),
-                                              onTap: () {
-                                                deletePost(
-                                                  widget.snap['postId']
-                                                      .toString(),
-                                                );
-                                                // remove the dialog box
-                                                Navigator.of(context).pop();
-                                              }),
-                                        )
-                                        .toList()),
+                    widget.snap['uid'].toString() == user.uid
+                        ? IconButton(
+                            onPressed: () {
+                              showDialog(
+                                useRootNavigator: false,
+                                context: context,
+                                builder: (context) {
+                                  return Dialog(
+                                    child: ListView(
+                                        padding: const EdgeInsets.symmetric(
+                                            vertical: 16),
+                                        shrinkWrap: true,
+                                        children: [
+                                          'Delete',
+                                        ]
+                                            .map(
+                                              (e) => InkWell(
+                                                  child: Container(
+                                                    padding:
+                                                        const EdgeInsets.symmetric(
+                                                            vertical: 12,
+                                                            horizontal: 16),
+                                                    child: Text(e),
+                                                  ),
+                                                  onTap: () {
+                                                    deletePost(
+                                                      widget.snap['postId']
+                                                          .toString(),
+                                                    );
+                                                    // remove the dialog box
+                                                    Navigator.of(context).pop();
+                                                  }),
+                                            )
+                                            .toList()),
+                                  );
+                                },
                               );
                             },
-                          );
-                        },
-                        icon: const Icon(Icons.more_vert),
-                      )
-                    : Container(),
+                            icon: const Icon(Icons.more_vert),
+                          )
+                        : Container(),
+                  ],
+                ),
               ],
             ),
           ),
+          Text('タイトル：${widget.snap['description']}',
+              style: const TextStyle(
+                color: secondaryColor,
+              )),
           // IMAGE SECTION OF THE POST
           GestureDetector(
             onDoubleTap: () {
@@ -305,7 +313,6 @@ class _PostCardState extends State<PostCard> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
-                          Icon(Icons.details,color: Colors.red,),
                           isVisible == false
                               ? Text(
                             '詳細を表示する',
@@ -317,7 +324,7 @@ class _PostCardState extends State<PostCard> {
                               : Text(
                             '詳細を非表示にする',
                             style: TextStyle(
-                                color: Colors.red,
+                                color: Colors.blue,
                                 fontWeight: FontWeight.bold
                             ),
                           ),
@@ -345,29 +352,6 @@ class _PostCardState extends State<PostCard> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Container(
-          width: double.infinity,
-          padding: const EdgeInsets.only(
-            top: 8,
-          ),
-          child: RichText(
-            text: TextSpan(
-              style: const TextStyle(color: primaryColor),
-              children: [
-                TextSpan(
-                  text: '投稿者：${widget.snap['username'].toString()}',
-                  style: const TextStyle(
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
-        Text('タイトル：${widget.snap['description']}',
-            style: const TextStyle(
-              color: secondaryColor,
-            )),
         Text('メモ：${widget.snap['othertext']}',
             style: const TextStyle(
               color: secondaryColor,

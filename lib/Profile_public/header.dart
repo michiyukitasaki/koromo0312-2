@@ -80,7 +80,7 @@ class IntroductionWidget extends StatelessWidget {
         [
           " - Introduction".text.gray500.widest.make(),
           10.heightBox,
-          "名前：ころも\n由来：天ぷらの衣みたいだから\n誕生日：2021/11/18\n犬種：マルチーズ×プードル\n性別：♂\n毛色：アプリコット"
+          "名前：ころも\n由来：天ぷらの衣みたいだから\n誕生日：2021/11/18\n犬種：マルチーズ×トイプードル\n性別：♂\n毛色：アプリコット"
               "出身地：茨城県"
               .text
               .white

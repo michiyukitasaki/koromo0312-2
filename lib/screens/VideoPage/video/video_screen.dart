@@ -124,17 +124,19 @@ class VideoScreen extends StatelessWidget {
                                   ),
                                   Row(
                                     children: [
-                                      const Icon(
-                                        Icons.music_note,
-                                        size: 15,
-                                        color: Colors.white,
-                                      ),
-                                      Text(
-                                        data.songName,
-                                        style: const TextStyle(
-                                          fontSize: 15,
-                                          color: Colors.white,
-                                          fontWeight: FontWeight.bold,
+                                      // const Icon(
+                                      //   Icons.music_note,
+                                      //   size: 15,
+                                      //   color: Colors.white,
+                                      // ),
+                                      Flexible(
+                                        child: Text(
+                                          data.songName,
+                                          style: const TextStyle(
+                                            fontSize: 15,
+                                            color: Colors.white,
+                                            fontWeight: FontWeight.bold,
+                                          ),
                                         ),
                                       ),
                                     ],

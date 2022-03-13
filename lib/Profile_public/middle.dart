@@ -11,7 +11,7 @@ class MiddleScreen extends StatelessWidget {
           child: Flex(
               direction: context.isMobile ? Axis.vertical : Axis.horizontal,
               children: [
-                "Koromo's works\n"
+                "Koromo's\n"
                     .richText
                     .withTextSpanChildren(
                         ["Favorite Photo".textSpan.yellow400.make()])
@@ -24,11 +24,11 @@ class MiddleScreen extends StatelessWidget {
                   enlargeCenterPage: true,
                   scrollDirection: Axis.horizontal,
                   items: [
-                    ProjectWidget(title: "Frontier Wallet"),
-                    ProjectWidget(title: "Click2Chat"),
-                    ProjectWidget(title: "QArt Fashion"),
-                    ProjectWidget(title: "ReadyO"),
-                    ProjectWidget(title: "Payoye"),
+                    ProjectWidget(title: "宣伝写真",photo: 'images/1.JPG',),
+                    ProjectWidget(title: "ハウス",photo: 'images/8.JPG',),
+                    ProjectWidget(title: "膝上",photo: 'images/9.jpg',),
+                    ProjectWidget(title: 'ぶち上げ',photo: 'images/10.jpg',),
+                    ProjectWidget(title: "HP写真",photo: 'images/2.JPG',),
                   ],
                   height: 170,
                   viewportFraction: context.isMobile ? 0.75 : 0.4,
@@ -44,13 +44,17 @@ class MiddleScreen extends StatelessWidget {
 
 class ProjectWidget extends StatelessWidget {
   final String? title;
+  final String? photo;
 
-  const ProjectWidget({Key? key, @required this.title}) : super(key: key);
+  const ProjectWidget({Key? key,
+    required this.title,
+    required this.photo
+  }) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        Image.asset('images/icon.png'),
+        Image.asset(photo!),
         title!.text.bold.white.xl.wide.fade
             .make()
             .box
