@@ -25,6 +25,7 @@ class PostCard extends StatefulWidget {
 class _PostCardState extends State<PostCard> {
   int commentLen = 0;
   bool isLikeAnimating = false;
+  bool isVisible = false;
 
   @override
   void initState() {
@@ -86,12 +87,12 @@ class _PostCardState extends State<PostCard> {
             ).copyWith(right: 0),
             child: Row(
               children: <Widget>[
-                CircleAvatar(
-                  radius: 16,
-                  backgroundImage: NetworkImage(
-                    widget.snap['profImage'].toString(),
-                  ),
-                ),
+                // CircleAvatar(
+                //   radius: 16,
+                //   backgroundImage: NetworkImage(
+                //     widget.snap['profImage'].toString(),
+                //   ),
+                // ),
                 Expanded(
                   child: Padding(
                     padding: const EdgeInsets.only(
@@ -260,93 +261,141 @@ class _PostCardState extends State<PostCard> {
                         .textTheme
                         .subtitle2!
                         .copyWith(fontWeight: FontWeight.w800),
-                    child: Text(
-                      '${widget.snap['likes'].length} likes',
-                      style: Theme.of(context).textTheme.bodyText2,
-                    )),
-                Container(
-                  width: double.infinity,
-                  padding: const EdgeInsets.only(
-                    top: 8,
-                  ),
-                  child: RichText(
-                    text: TextSpan(
-                      style: const TextStyle(color: primaryColor),
+                    child: Row(
                       children: [
-                        TextSpan(
-                          text: '投稿者：${widget.snap['username'].toString()}',
-                          style: const TextStyle(
-                            fontWeight: FontWeight.bold,
+                        Text(
+                          '${widget.snap['likes'].length} likes',
+                          style: Theme.of(context).textTheme.bodyText2,
+                        ),
+                        SizedBox(
+                          width: 16,
+                        ),
+                        InkWell(
+                          child: Container(
+                            child: Text(
+                              'View all $commentLen comments',
+                              style: const TextStyle(
+                                fontSize: 16,
+                                color: secondaryColor,
+                              ),
+                            ),
+                            padding: const EdgeInsets.symmetric(vertical: 4),
                           ),
-                        ),
-                        TextSpan(
-                          text: '${widget.snap['description']}',
-                        ),
+                          onTap: () => Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) => CommentsScreen(
+                                postId: widget.snap['postId'].toString(),
+                              ),
+                            ),
+                          ),
+                        )
                       ],
-                    ),
-                  ),
-                ),
-                InkWell(
-                  child: Container(
-                    child: Text(
-                      'View all $commentLen comments',
-                      style: const TextStyle(
-                        fontSize: 16,
-                        color: secondaryColor,
-                      ),
-                    ),
-                    padding: const EdgeInsets.symmetric(vertical: 4),
-                  ),
-                  onTap: () => Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (context) => CommentsScreen(
-                        postId: widget.snap['postId'].toString(),
-                      ),
-                    ),
-                  ),
-                ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Container(
-                      child: Text(
-                        DateFormat.yMMMd()
-                            .format(widget.snap['datePublished'].toDate()),
-                        style: const TextStyle(
-                          color: secondaryColor,
-                        ),
-                      ),
-                      padding: const EdgeInsets.symmetric(vertical: 4),
-                    ),
-                    Text('シーン：${widget.snap['isSelectedItem']}',
-                        style: const TextStyle(
-                          color: secondaryColor,
-                        )),
-                    Text('ご機嫌度：${widget.snap['conditionnumber'].toInt()}%',
-                        style: const TextStyle(
-                          color: secondaryColor,
-                        )),
-                    Text('おすすめ度：${widget.snap['recomend'].toInt()}',
-                        style: const TextStyle(
-                          color: secondaryColor,
-                        )),
-                  ],
-                ),
-                // Container(
-                //   child: Text(
-                //     DateFormat('yyyy/MM/dd')
-                //         .format(widget.snap['fromDate']),
-                //     style: const TextStyle(
-                //       color: secondaryColor,
-                //     ),
-                //   ),
-                //   padding: const EdgeInsets.symmetric(vertical: 4),
+                    )),
+                // ListWheelScrollView(
+                //   itemExtent: 75,
+                //   children: [],
                 // ),
+                Center(
+                  child: SizedBox(
+                    width: MediaQuery.of(context).size.width*0.5,
+                    child: ElevatedButton(
+                      style: ButtonStyle(
+                          backgroundColor:
+                              MaterialStateProperty.all<Color>(brownColor)),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Icon(Icons.details,color: Colors.red,),
+                          isVisible == false
+                              ? Text(
+                            '詳細を表示する',
+                          style: TextStyle(
+                              color: Colors.red,
+                          fontWeight: FontWeight.bold
+                          ),
+                          )
+                              : Text(
+                            '詳細を非表示にする',
+                            style: TextStyle(
+                                color: Colors.red,
+                                fontWeight: FontWeight.bold
+                            ),
+                          ),
+                        ],
+                      ),
+                      onPressed: () {
+                        setState(toggleShowText);
+                      },
+                    ),
+                  ),
+                ),
+                Visibility(
+                  visible: isVisible,
+                  child: pictureDetialWidgetVisible(),
+                ),
               ],
             ),
           )
         ],
       ),
     );
+  }
+
+  Column pictureDetialWidgetVisible() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Container(
+          width: double.infinity,
+          padding: const EdgeInsets.only(
+            top: 8,
+          ),
+          child: RichText(
+            text: TextSpan(
+              style: const TextStyle(color: primaryColor),
+              children: [
+                TextSpan(
+                  text: '投稿者：${widget.snap['username'].toString()}',
+                  style: const TextStyle(
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+        Text('タイトル：${widget.snap['description']}',
+            style: const TextStyle(
+              color: secondaryColor,
+            )),
+        Text('メモ：${widget.snap['othertext']}',
+            style: const TextStyle(
+              color: secondaryColor,
+            )),
+        Text(
+          '撮影日：${DateFormat.yMMMd().format(widget.snap['datePublished'].toDate())}',
+          style: const TextStyle(
+            color: secondaryColor,
+          ),
+        ),
+        Text('シーン：${widget.snap['isSelectedItem']}',
+            style: const TextStyle(
+              color: secondaryColor,
+            )),
+        Text('ご機嫌度：${widget.snap['conditionnumber'].toInt()}%',
+            style: const TextStyle(
+              color: secondaryColor,
+            )),
+        Text('おすすめ度：${widget.snap['recomend'].toInt()}',
+            style: const TextStyle(
+              color: secondaryColor,
+            )),
+      ],
+    );
+  }
+
+
+  void toggleShowText() {
+    isVisible = !isVisible;
   }
 }

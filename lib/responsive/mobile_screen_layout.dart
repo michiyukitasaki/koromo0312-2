@@ -58,18 +58,18 @@ class _MobileScreenLayoutState extends State<MobileScreenLayout> {
           ),
           BottomNavigationBarItem(
               icon: Icon(
-                Icons.search,
+                Icons.video_collection_sharp,
                 color: (_page == 1) ? primaryColor : secondaryColor,
               ),
-              label: '検索',
+              label: '動画',
               backgroundColor: primaryColor,
           ),
           BottomNavigationBarItem(
               icon: Icon(
-                Icons.add_circle,
+                Icons.menu_book,
                 color: (_page == 2) ? primaryColor : secondaryColor,
               ),
-              label: '写真追加',
+              label: 'メニュー',
               backgroundColor: primaryColor),
           BottomNavigationBarItem(
             icon: Icon(
@@ -81,10 +81,10 @@ class _MobileScreenLayoutState extends State<MobileScreenLayout> {
           ),
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.person,
+              Icons.calendar_today_outlined,
               color: (_page == 4) ? primaryColor : secondaryColor,
             ),
-            label: 'アカウント',
+            label: 'スケジュール',
             backgroundColor: primaryColor,
           ),
         ],

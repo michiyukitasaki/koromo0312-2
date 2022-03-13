@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:instagram_clone_flutter/Profile_public/home.dart';
 
 import '../Calendar/calendar_page/calendar_page.dart';
 import '../ToDo/page/home_page.dart';
@@ -8,8 +9,10 @@ import '../ref/video_screen.dart';
 import '../resources/auth_methods.dart';
 import '../screens/VideoPage/video/add_video_screen.dart';
 import '../screens/VideoPage/video/video_screen.dart';
+import '../screens/add_post_screen.dart';
 import '../screens/feed_screen.dart';
 import '../screens/login_screen.dart';
+import '../screens/search_screen.dart';
 class MyDrawer extends StatelessWidget {
 
   // final String uid;
@@ -26,37 +29,37 @@ class MyDrawer extends StatelessWidget {
         children: [
         Column(
               children: [
-                ListTile(
-                  leading: Icon(Icons.wysiwyg,color: Colors.white,),
-                  title: Text('ホーム',style: TextStyle(color: Colors.white),),
-                  onTap: (){
-                    // Route route = MaterialPageRoute(builder: (c) => ItemHome());
-                    // Navigator.pushReplacement(context, route);
-                    Get.to(()=>FeedScreen());
-                  },
-                ),
-                Divider(
-                  height: 10,color: Colors.white,thickness: 6,
-                ),
                 // ListTile(
-                //   leading: Icon(Icons.image_outlined,color: Colors.white,),
-                //   title: Text('写真',style: TextStyle(color: Colors.white),),
+                //   leading: Icon(Icons.wysiwyg,color: Colors.white,),
+                //   title: Text('ホーム',style: TextStyle(color: Colors.white),),
                 //   onTap: (){
                 //     // Route route = MaterialPageRoute(builder: (c) => ItemHome());
                 //     // Navigator.pushReplacement(context, route);
-                //     // Get.to(()=>ImagesScreen());
+                //     Get.to(()=>WebPubHomeScreen());
                 //   },
                 // ),
                 // Divider(
                 //   height: 10,color: Colors.white,thickness: 6,
                 // ),
                 ListTile(
-                  leading: Icon(Icons.calendar_today_outlined,color: Colors.white,),
-                  title: Text('カレンダー',style: TextStyle(color: Colors.white),),
+                  leading: Icon(Icons.image_search,color: Colors.white,),
+                  title: Text('写真一覧',style: TextStyle(color: Colors.white),),
                   onTap: (){
                     // Route route = MaterialPageRoute(builder: (c) => ItemHome());
                     // Navigator.pushReplacement(context, route);
-                    Get.to(()=>CalendarPage());
+                    Get.to(()=> SearchScreen());
+                  },
+                ),
+                Divider(
+                  height: 10,color: Colors.white,thickness: 6,
+                ),
+                ListTile(
+                  leading: Icon(Icons.photo_camera_back,color: Colors.white,),
+                  title: Text('画像のアップロード',style: TextStyle(color: Colors.white),),
+                  onTap: (){
+                    // Route route = MaterialPageRoute(builder: (c) => ItemHome());
+                    // Navigator.pushReplacement(context, route);
+                    Get.to(()=>AddPostScreen());
                   },
                 ),
                 Divider(
@@ -71,18 +74,18 @@ class MyDrawer extends StatelessWidget {
                     Get.to(()=>AddVideoScreen());
                   },
                 ),
-                Divider(
-                  height: 10,color: Colors.white,thickness: 6,
-                ),
-                ListTile(
-                  leading: Icon(Icons.video_collection_sharp,color: Colors.white,),
-                  title: Text('ビデオ',style: TextStyle(color: Colors.white),),
-                  onTap: (){
-                    // Route route = MaterialPageRoute(builder: (c) => ItemHome());
-                    // Navigator.pushReplacement(context, route);
-                    Get.to(()=>VideoScreen());
-                  },
-                ),
+                // Divider(
+                //   height: 10,color: Colors.white,thickness: 6,
+                // ),
+                // ListTile(
+                //   leading: Icon(Icons.video_collection_sharp,color: Colors.white,),
+                //   title: Text('動画',style: TextStyle(color: Colors.white),),
+                //   onTap: (){
+                //     // Route route = MaterialPageRoute(builder: (c) => ItemHome());
+                //     // Navigator.pushReplacement(context, route);
+                //     Get.to(()=>VideoScreen());
+                //   },
+                // ),
                 Divider(
                   height: 10,color: Colors.white,thickness: 6,
                 ),

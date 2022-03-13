@@ -82,148 +82,150 @@ class _SignupScreenState extends State<SignupScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomInset: false,
-      body: SafeArea(
-        child: Container(
-          padding: const EdgeInsets.symmetric(horizontal: 32),
-          width: double.infinity,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Flexible(
-                child: Container(),
-                flex: 2,
-              ),
-        Text('ころもの日常',
-            style: TextStyle(color: primaryColor,fontSize: 40)
-          //   height: 64,),
-        ),
-              // SvgPicture.asset(
-              //   'assets/ic_instagram.svg',
-              //   color: primaryColor,
-              //   height: 64,
-              // ),
-              const SizedBox(
-                height: 16,
-              ),
-              Stack(
-                children: [
-                  _image != null
-                      ? CircleAvatar(
-                          radius: 64,
-                          backgroundImage: MemoryImage(_image!),
-                          backgroundColor: Colors.red,
-                        )
-                      : const CircleAvatar(
-                          radius: 64,
-                          backgroundImage: NetworkImage(
-                              'https://i.stack.imgur.com/l60Hf.png'),
-                          backgroundColor: Colors.red,
-                        ),
-                  Positioned(
-                    bottom: -10,
-                    left: 80,
-                    child: IconButton(
-                      onPressed: selectImage,
-                      icon: const Icon(Icons.add_a_photo),
-                    ),
-                  )
-                ],
-              ),
-              const SizedBox(
-                height: 24,
-              ),
-              TextFieldInput(
-                hintText: 'お名前を入力してください',
-                textInputType: TextInputType.text,
-                textEditingController: _usernameController,
-              ),
-              const SizedBox(
-                height: 24,
-              ),
-              TextFieldInput(
-                hintText: 'メールアドレスを入力してください',
-                textInputType: TextInputType.emailAddress,
-                textEditingController: _emailController,
-              ),
-              const SizedBox(
-                height: 24,
-              ),
-              TextFieldInput(
-                hintText: '6桁以上のパスワードを入力して下さい',
-                textInputType: TextInputType.text,
-                textEditingController: _passwordController,
-                isPass: true,
-              ),
-              const SizedBox(
-                height: 24,
-              ),
-              TextFieldInput(
-                hintText: 'パスワードの確認',
-                textInputType: TextInputType.text,
-                textEditingController: _bioController,
-              ),
-              const SizedBox(
-                height: 24,
-              ),
-              InkWell(
-                child: Container(
-                  child: !_isLoading
-                      ? const Text(
-                          '登録する',
-                    style: TextStyle(color: Colors.black,fontSize: 16),
-                    overflow: TextOverflow.ellipsis,
-                        )
-                      : const CircularProgressIndicator(
-                          color: primaryColor,
-                        ),
-                  width: double.infinity,
-                  alignment: Alignment.center,
-                  padding: const EdgeInsets.symmetric(vertical: 12),
-                  decoration: const ShapeDecoration(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(4)),
-                    ),
-                    color: brownColor,
-                  ),
+      // resizeToAvoidBottomInset: false,
+      body: SingleChildScrollView(
+        child: SafeArea(
+          child: Container(
+            padding: const EdgeInsets.symmetric(horizontal: 32),
+            width: double.infinity,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                // Flexible(
+                //   child: Container(),
+                //   flex: 2,
+                // ),
+          Text('ころもの日常',
+              style: TextStyle(color: primaryColor,fontSize: 40)
+            //   height: 64,),
+          ),
+                // SvgPicture.asset(
+                //   'assets/ic_instagram.svg',
+                //   color: primaryColor,
+                //   height: 64,
+                // ),
+                const SizedBox(
+                  height: 16,
                 ),
-                onTap: signUpUser,
-              ),
-              const SizedBox(
-                height: 12,
-              ),
-              Flexible(
-                child: Container(),
-                flex: 2,
-              ),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Container(
-                    child: const Text(
-                      'アカウントは持っていますか?',
-                    ),
-                    padding: const EdgeInsets.symmetric(vertical: 8),
-                  ),
-                  GestureDetector(
-                    onTap: () => Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (context) => const LoginScreen(),
+                Stack(
+                  children: [
+                    _image != null
+                        ? CircleAvatar(
+                            radius: 64,
+                            backgroundImage: MemoryImage(_image!),
+                            backgroundColor: Colors.red,
+                          )
+                        : const CircleAvatar(
+                            radius: 64,
+                            backgroundImage: NetworkImage(
+                                'https://i.stack.imgur.com/l60Hf.png'),
+                            backgroundColor: Colors.red,
+                          ),
+                    Positioned(
+                      bottom: -10,
+                      left: 80,
+                      child: IconButton(
+                        onPressed: selectImage,
+                        icon: const Icon(Icons.add_a_photo),
                       ),
+                    )
+                  ],
+                ),
+                const SizedBox(
+                  height: 24,
+                ),
+                TextFieldInput(
+                  hintText: 'お名前を入力してください',
+                  textInputType: TextInputType.text,
+                  textEditingController: _usernameController,
+                ),
+                const SizedBox(
+                  height: 24,
+                ),
+                TextFieldInput(
+                  hintText: 'メールアドレスを入力してください',
+                  textInputType: TextInputType.emailAddress,
+                  textEditingController: _emailController,
+                ),
+                const SizedBox(
+                  height: 24,
+                ),
+                TextFieldInput(
+                  hintText: '6桁以上のパスワードを入力して下さい',
+                  textInputType: TextInputType.text,
+                  textEditingController: _passwordController,
+                  isPass: true,
+                ),
+                const SizedBox(
+                  height: 24,
+                ),
+                TextFieldInput(
+                  hintText: 'パスワードの確認（再入力）',
+                  textInputType: TextInputType.text,
+                  textEditingController: _bioController,
+                ),
+                const SizedBox(
+                  height: 24,
+                ),
+                InkWell(
+                  child: Container(
+                    child: !_isLoading
+                        ? const Text(
+                            '登録する',
+                      style: TextStyle(color: Colors.black,fontSize: 16),
+                      overflow: TextOverflow.ellipsis,
+                          )
+                        : const CircularProgressIndicator(
+                            color: primaryColor,
+                          ),
+                    width: double.infinity,
+                    alignment: Alignment.center,
+                    padding: const EdgeInsets.symmetric(vertical: 12),
+                    decoration: const ShapeDecoration(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(4)),
+                      ),
+                      color: brownColor,
                     ),
-                    child: Container(
+                  ),
+                  onTap: signUpUser,
+                ),
+                const SizedBox(
+                  height: 12,
+                ),
+                // Flexible(
+                //   child: Container(),
+                //   flex: 2,
+                // ),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Container(
                       child: const Text(
-                        ' ログインページへ戻る',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                        ),
+                        'アカウントは持っていますか?',
                       ),
                       padding: const EdgeInsets.symmetric(vertical: 8),
                     ),
-                  ),
-                ],
-              ),
-            ],
+                    GestureDetector(
+                      onTap: () => Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => const LoginScreen(),
+                        ),
+                      ),
+                      child: Container(
+                        child: const Text(
+                          ' ログインページへ戻る',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        padding: const EdgeInsets.symmetric(vertical: 8),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
       ),

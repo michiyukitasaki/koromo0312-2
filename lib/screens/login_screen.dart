@@ -59,114 +59,112 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomInset: false,
-      body: SafeArea(
-        child: Container(
-          padding: MediaQuery.of(context).size.width > webScreenSize
-              ? EdgeInsets.symmetric(
-                  horizontal: MediaQuery.of(context).size.width / 3)
-              : const EdgeInsets.symmetric(horizontal: 32),
-          width: double.infinity,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Spacer(flex: 2,),
-              Flexible(
-                child: CircleAvatar(
+      body: SingleChildScrollView(
+        child: SafeArea(
+          child: Container(
+            padding: MediaQuery.of(context).size.width > webScreenSize
+                ? EdgeInsets.symmetric(
+                    horizontal: MediaQuery.of(context).size.width / 3)
+                : const EdgeInsets.symmetric(horizontal: 32),
+            width: double.infinity,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                // Spacer(flex: 2,),
+                CircleAvatar(
                   backgroundColor: Colors.grey,
                   backgroundImage: AssetImage('images/1.JPG'),
                   radius: 70,
                 ),
-                flex: 5,
-              ),
-              Text('ころもの日常',
-              style: TextStyle(color: primaryColor,fontSize: 40)
-                //   height: 64,),
-              ),
-              // SvgPicture.asset(
-              //   'assets/ic_instagram.svg',
-              //   color: primaryColor,
-              //   height: 64,
-              // ),
-              SizedBox(
-                height: 64,
-              ),
-              TextFieldInput(
-                hintText: 'メールアドレスを入力して下さい',
-                textInputType: TextInputType.emailAddress,
-                textEditingController: _emailController,
-              ),
-              const SizedBox(
-                height: 24,
-              ),
-              TextFieldInput(
-                hintText: 'パスワードを入力して下さい',
-                textInputType: TextInputType.text,
-                textEditingController: _passwordController,
-                isPass: true,
-              ),
-              const SizedBox(
-                height: 24,
-              ),
-              InkWell(
-                child: Container(
-                  child: !_isLoading
-                      ? const Text(
-                          'ログイン',
-                        style: TextStyle(color: Colors.black,fontSize: 20),
-                        )
-                      : const CircularProgressIndicator(
-                          color: primaryColor,
-                        ),
-                  width: double.infinity,
-                  alignment: Alignment.center,
-                  padding: const EdgeInsets.symmetric(vertical: 12),
-                  decoration: const ShapeDecoration(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(12)),
-                    ),
-                    color: brownColor,
-                  ),
+                Text('ころもの日常',
+                style: TextStyle(color: primaryColor,fontSize: 40)
+                  //   height: 64,),
                 ),
-                onTap: loginUser,
-              ),
-              const SizedBox(
-                height: 6,
-              ),
-              Flexible(
-                child: Container(),
-                flex: 1,
-              ),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Container(
-                    child: const Text(
-                      'アカウントは持っていますか?',
-                    ),
-                    padding: const EdgeInsets.symmetric(vertical: 8),
-                  ),
-                  GestureDetector(
-                    onTap: () => Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (context) => const SignupScreen(),
+                // SvgPicture.asset(
+                //   'assets/ic_instagram.svg',
+                //   color: primaryColor,
+                //   height: 64,
+                // ),
+                SizedBox(
+                  height: 64,
+                ),
+                TextFieldInput(
+                  hintText: 'メールアドレスを入力して下さい',
+                  textInputType: TextInputType.emailAddress,
+                  textEditingController: _emailController,
+                ),
+                const SizedBox(
+                  height: 24,
+                ),
+                TextFieldInput(
+                  hintText: 'パスワードを入力して下さい',
+                  textInputType: TextInputType.text,
+                  textEditingController: _passwordController,
+                  isPass: true,
+                ),
+                const SizedBox(
+                  height: 24,
+                ),
+                InkWell(
+                  child: Container(
+                    child: !_isLoading
+                        ? const Text(
+                            'ログイン',
+                          style: TextStyle(color: Colors.black,fontSize: 20),
+                          )
+                        : const CircularProgressIndicator(
+                            color: primaryColor,
+                          ),
+                    width: double.infinity,
+                    alignment: Alignment.center,
+                    padding: const EdgeInsets.symmetric(vertical: 12),
+                    decoration: const ShapeDecoration(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(12)),
                       ),
+                      color: brownColor,
                     ),
-                    child: Container(
+                  ),
+                  onTap: loginUser,
+                ),
+                const SizedBox(
+                  height: 6,
+                ),
+                // Flexible(
+                //   child: Container(),
+                //   flex: 1,
+                // ),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Container(
                       child: const Text(
-                        ' 初めての方はこちらへ！！',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: Colors.red,
-                          fontSize: 20
-                        ),
+                        'アカウントは持っていますか?',
                       ),
                       padding: const EdgeInsets.symmetric(vertical: 8),
                     ),
-                  ),
-                ],
-              ),
-            ],
+                    GestureDetector(
+                      onTap: () => Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => const SignupScreen(),
+                        ),
+                      ),
+                      child: Container(
+                        child: const Text(
+                          ' 初めての方はこちらへ！！',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            color: Colors.red,
+                            fontSize: 20
+                          ),
+                        ),
+                        padding: const EdgeInsets.symmetric(vertical: 8),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
       ),
