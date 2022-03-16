@@ -11,7 +11,7 @@ class MobileScreenLayout extends StatefulWidget {
 }
 
 class _MobileScreenLayoutState extends State<MobileScreenLayout> {
-  int _page = 0;
+  int _page = 3;
   late PageController pageController; // for tabs animation
 
   @override
@@ -49,6 +49,14 @@ class _MobileScreenLayoutState extends State<MobileScreenLayout> {
         backgroundColor: mobileBackgroundColor,
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
+            icon: Icon(
+              Icons.favorite,
+              color: (_page == 3) ? primaryColor : secondaryColor,
+            ),
+            label: 'ころもについて',
+            backgroundColor: primaryColor,
+          ),
+          BottomNavigationBarItem(
             label:'写真',
             icon: Icon(
               Icons.image_outlined,
@@ -73,18 +81,10 @@ class _MobileScreenLayoutState extends State<MobileScreenLayout> {
               backgroundColor: primaryColor),
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.favorite,
-              color: (_page == 3) ? primaryColor : secondaryColor,
-            ),
-            label: 'ころもについて',
-            backgroundColor: primaryColor,
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.calendar_today_outlined,
+              Icons.newspaper,
               color: (_page == 4) ? primaryColor : secondaryColor,
             ),
-            label: 'スケジュール',
+            label: '最新ニュース',
             backgroundColor: primaryColor,
           ),
         ],

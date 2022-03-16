@@ -11,7 +11,7 @@ class WebScreenLayout extends StatefulWidget {
 }
 
 class _WebScreenLayoutState extends State<WebScreenLayout> {
-  int _page = 0;
+  int _page = 3;
   late PageController pageController; // for tabs animation
 
   @override
@@ -54,6 +54,13 @@ class _WebScreenLayoutState extends State<WebScreenLayout> {
         actions: [
           IconButton(
             icon: Icon(
+              Icons.favorite,
+              color: _page == 3 ? primaryColor : secondaryColor,
+            ),
+            onPressed: () => navigationTapped(3),
+          ),
+          IconButton(
+            icon: Icon(
               Icons.image_outlined,
               color: _page == 0 ? primaryColor : secondaryColor,
             ),
@@ -73,16 +80,10 @@ class _WebScreenLayoutState extends State<WebScreenLayout> {
             ),
             onPressed: () => navigationTapped(2),
           ),
+
           IconButton(
             icon: Icon(
-              Icons.favorite,
-              color: _page == 3 ? primaryColor : secondaryColor,
-            ),
-            onPressed: () => navigationTapped(3),
-          ),
-          IconButton(
-            icon: Icon(
-              Icons.calendar_today_outlined,
+              Icons.newspaper_outlined,
               color: _page == 4 ? primaryColor : secondaryColor,
             ),
             onPressed: () => navigationTapped(4),

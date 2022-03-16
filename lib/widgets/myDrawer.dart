@@ -2,11 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:instagram_clone_flutter/Profile_public/home.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../Calendar/calendar_page/calendar_page.dart';
+import '../NewsPage/home_screen.dart';
 import '../ToDo/page/home_page.dart';
-import '../ref/video_screen.dart';
 import '../resources/auth_methods.dart';
+import '../responsive/mobile_screen_layout.dart';
+import '../responsive/responsive_layout.dart';
+import '../responsive/web_screen_layout.dart';
 import '../screens/VideoPage/video/add_video_screen.dart';
 import '../screens/VideoPage/video/video_screen.dart';
 import '../screens/add_post_screen.dart';
@@ -42,12 +46,16 @@ class MyDrawer extends StatelessWidget {
                 //   height: 10,color: Colors.white,thickness: 6,
                 // ),
                 ListTile(
-                  leading: Icon(Icons.image_search,color: Colors.white,),
-                  title: Text('写真一覧',style: TextStyle(color: Colors.white),),
+                  leading: Icon(Icons.home,color: Colors.white,),
+                  title: Text('ホーム',style: TextStyle(color: Colors.white),),
                   onTap: (){
                     // Route route = MaterialPageRoute(builder: (c) => ItemHome());
                     // Navigator.pushReplacement(context, route);
-                    Get.to(()=> SearchScreen());
+                    Get.to(()=>  ResponsiveLayout(
+                      mobileScreenLayout: MobileScreenLayout(),
+                      webScreenLayout: WebScreenLayout(),
+                    )
+                    );
                   },
                 ),
                 Divider(
@@ -74,18 +82,18 @@ class MyDrawer extends StatelessWidget {
                     Get.to(()=>AddVideoScreen());
                   },
                 ),
-                // Divider(
-                //   height: 10,color: Colors.white,thickness: 6,
-                // ),
-                // ListTile(
-                //   leading: Icon(Icons.video_collection_sharp,color: Colors.white,),
-                //   title: Text('動画',style: TextStyle(color: Colors.white),),
-                //   onTap: (){
-                //     // Route route = MaterialPageRoute(builder: (c) => ItemHome());
-                //     // Navigator.pushReplacement(context, route);
-                //     Get.to(()=>VideoScreen());
-                //   },
-                // ),
+                Divider(
+                  height: 10,color: Colors.white,thickness: 6,
+                ),
+                ListTile(
+                  leading: Icon(Icons.calendar_today_rounded,color: Colors.white,),
+                  title: Text('カレンダー',style: TextStyle(color: Colors.white),),
+                  onTap: (){
+                    // Route route = MaterialPageRoute(builder: (c) => ItemHome());
+                    // Navigator.pushReplacement(context, route);
+                    Get.to(()=>CalendarPage());
+                  },
+                ),
                 Divider(
                   height: 10,color: Colors.white,thickness: 6,
                 ),
@@ -99,6 +107,31 @@ class MyDrawer extends StatelessWidget {
                         builder: (context) => ToDoHomePage(),
                       ),
                     );
+                  },
+                ),
+                Divider(
+                  height: 10,color: Colors.white,thickness: 6,
+                ),
+                ListTile(
+                  leading: Icon(Icons.notes_outlined,color: Colors.white,),
+                  title: Text('ニュースページ',style: TextStyle(color: Colors.white),),
+                  onTap: (){
+                    Navigator.of(context)
+                        .push(
+                      MaterialPageRoute(
+                        builder: (context) => NewsFeedScreen(),
+                      ),
+                    );
+                  },
+                ),
+                Divider(
+                  height: 10,color: Colors.white,thickness: 6,
+                ),
+                ListTile(
+                  leading: Icon(Icons.transit_enterexit,color: Colors.white,),
+                  title: Text('おかねるブログへ',style: TextStyle(color: Colors.white),),
+                  onTap: (){
+                    _launchInApp();
                   },
                 ),
                 Divider(
@@ -129,4 +162,17 @@ class MyDrawer extends StatelessWidget {
 
     );
   }
+  _launchInApp() async {
+    String url = 'https://okaneru.com/';
+    if (await canLaunch(url)) {
+      await launch(
+        url,
+        forceSafariVC: true,
+        forceWebView: true,
+      );
+    } else {
+      throw 'このURLにはアクセスできません';
+    }
+  }
+
 }
