@@ -12,7 +12,7 @@ class CompletedListWidget extends StatelessWidget {
     return todos.isEmpty
         ? Center(
             child: Text(
-              'No completed tasks.',
+              '友達はいません',
               style: TextStyle(fontSize: 20),
             ),
           )

@@ -25,7 +25,7 @@ class TodoWidget extends StatelessWidget {
             children: [
               SlidableAction(
               backgroundColor: Colors.green,
-              label: 'Edit',
+              label: '編集',
               icon: Icons.edit,
                 onPressed: (BuildContext context) { editTodo(context, todo); },
             )],
@@ -38,7 +38,7 @@ class TodoWidget extends StatelessWidget {
             children: [
               SlidableAction(
                 backgroundColor: Colors.red,
-                label: 'Delete',
+                label: '削除',
                 icon: Icons.delete,
                 onPressed: (BuildContext context) { deleteTodo(context, todo); },
               )],
@@ -55,21 +55,28 @@ class TodoWidget extends StatelessWidget {
           padding: EdgeInsets.all(20),
           child: Row(
             children: [
-              Checkbox(
-                // activeColor: Theme.of(context).primaryColor,
-                activeColor: Colors.white,
-                checkColor: Colors.brown,
-                value: todo.isDone,
-                onChanged: (_) {
-                  final provider =
+              Column(
+                children: [
+                  Checkbox(
+                    // activeColor: Theme.of(context).primaryColor,
+                    activeColor: Colors.white,
+                    checkColor: Colors.brown,
+                    value: todo.isDone,
+                    onChanged: (_) {
+                      final provider =
                       Provider.of<TodosProvider>(context, listen: false);
-                  final isDone = provider.toggleTodoStatus(todo);
+                      final isDone = provider.toggleTodoStatus(todo);
 
-                  Utils.showSnackBar(
-                    context,
-                    isDone ? 'Task completed' : 'Task marked incomplete',
-                  );
-                },
+                      Utils.showSnackBar(
+                        context,
+                        isDone ? '多摩川付近' : 'それ以外',
+                      );
+                    },
+                  ),
+                  Text('多摩川付近'),
+                  Text('でなければ'),
+                  Text('チェック'),
+                ],
               ),
               const SizedBox(width: 20),
               Expanded(
@@ -77,7 +84,7 @@ class TodoWidget extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      todo.title,
+                      '犬名前：${todo.title}',
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         color: Theme.of(context).primaryColor,
@@ -88,7 +95,15 @@ class TodoWidget extends StatelessWidget {
                       Container(
                         margin: EdgeInsets.only(top: 4),
                         child: Text(
-                          todo.description,
+                          '犬種類：${todo.description}',
+                          style: TextStyle(fontSize: 20, height: 1.5,color: Colors.black),
+                        ),
+                      ),
+                    if (todo.owner.isNotEmpty)
+                      Container(
+                        margin: EdgeInsets.only(top: 4),
+                        child: Text(
+                          '飼い主特徴：${todo.owner}',
                           style: TextStyle(fontSize: 20, height: 1.5,color: Colors.black),
                         ),
                       )
@@ -104,7 +119,7 @@ class TodoWidget extends StatelessWidget {
     final provider = Provider.of<TodosProvider>(context, listen: false);
     provider.removeTodo(todo);
 
-    Utils.showSnackBar(context, 'Deleted the task');
+    Utils.showSnackBar(context, '友達削除');
   }
 
   void editTodo(BuildContext context, Todo todo) => Navigator.of(context).push(

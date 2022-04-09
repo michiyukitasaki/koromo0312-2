@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:instagram_clone_flutter/Calendar/calendar_page/calendar_page.dart';
 import 'package:instagram_clone_flutter/NewsPage/home_screen.dart';
 import 'package:instagram_clone_flutter/Profile_public/home.dart';
+import 'package:instagram_clone_flutter/ToDo/page/home_page.dart';
 import 'package:instagram_clone_flutter/screens/add_post_screen.dart';
 import 'package:instagram_clone_flutter/screens/feed_screen.dart';
 import 'package:instagram_clone_flutter/screens/profile_screen.dart';
@@ -18,16 +19,6 @@ List<Widget> homeScreenItems = [
   WebPubHomeScreen(),
   const FeedScreen(),
   VideoScreen(),
-  // const SearchScreen(),
-  // const AddPostScreen(),
-  // const Text('notifications'),
   MyDrawer(),
-  // WebPubHomeScreen(),
-  // ProfileScreen(
-  //   uid: FirebaseAuth.instance.currentUser!.uid,
-  // ),
-  // AddVideoScreen(),
-  // MyDrawer()
-  // CalendarPage(),
-  NewsFeedScreen()
+  ToDoHomePage()
 ];

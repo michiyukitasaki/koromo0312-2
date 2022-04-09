@@ -43,14 +43,15 @@ class UploadVideoController extends GetxController {
       String caption,
       String songName,
       String videoPath,
-      DateTime fromDate) async {
+      DateTime fromDate
+      ) async {
     try {
       String uid = FirebaseAuth.instance.currentUser!.uid;
       DocumentSnapshot userDoc =
           await FirebaseFirestore.instance.collection('users').doc(uid).get();
       // get id
       var allDocs = await FirebaseFirestore.instance.collection('videos').get();
-      int len = allDocs.docs.length;
+      int len = allDocs.docs.length + 1;
       String videoUrl = await _uploadVideoToStorage("Video $len", videoPath);
       String thumbnail = await _uploadImageToStorage("Video $len", videoPath);
 
@@ -66,7 +67,7 @@ class UploadVideoController extends GetxController {
         videoUrl: videoUrl,
         // profilePhoto: (userDoc.data()! as Map<String, dynamic>)['profilePhoto'],
         thumbnail: thumbnail,
-        fromDate:fromDate
+        fromDate:Timestamp.fromDate(fromDate)
       );
       Get.back();
       await FirebaseFirestore.instance

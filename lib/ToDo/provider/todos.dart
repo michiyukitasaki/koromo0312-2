@@ -28,9 +28,10 @@ class TodosProvider extends ChangeNotifier {
     return todo.isDone;
   }
 
-  void updateTodo(Todo todo, String title, String description) {
+  void updateTodo(Todo todo, String title, String description, String owner) {
     todo.title = title;
     todo.description = description;
+    todo.owner = owner;
 
     FirebaseApi.updateTodo(todo);
   }

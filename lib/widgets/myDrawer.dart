@@ -97,36 +97,18 @@ class MyDrawer extends StatelessWidget {
                 Divider(
                   height: 10,color: Colors.white,thickness: 6,
                 ),
-                ListTile(
-                  leading: Icon(Icons.notes_outlined,color: Colors.white,),
-                  title: Text('To Doリスト',style: TextStyle(color: Colors.white),),
-                  onTap: (){
-                    Navigator.of(context)
-                        .push(
-                      MaterialPageRoute(
-                        builder: (context) => ToDoHomePage(),
-                      ),
-                    );
-                  },
-                ),
-                Divider(
-                  height: 10,color: Colors.white,thickness: 6,
-                ),
-                ListTile(
-                  leading: Icon(Icons.notes_outlined,color: Colors.white,),
-                  title: Text('ニュースページ',style: TextStyle(color: Colors.white),),
-                  onTap: (){
-                    Navigator.of(context)
-                        .push(
-                      MaterialPageRoute(
-                        builder: (context) => NewsFeedScreen(),
-                      ),
-                    );
-                  },
-                ),
-                Divider(
-                  height: 10,color: Colors.white,thickness: 6,
-                ),
+                // ListTile(
+                //   leading: Icon(Icons.notes_outlined,color: Colors.white,),
+                //   title: Text('To Doリスト',style: TextStyle(color: Colors.white),),
+                //   onTap: (){
+                //     Navigator.of(context)
+                //         .push(
+                //       MaterialPageRoute(
+                //         builder: (context) => ToDoHomePage(),
+                //       ),
+                //     );
+                //   },
+                // ),
                 ListTile(
                   leading: Icon(Icons.transit_enterexit,color: Colors.white,),
                   title: Text('おかねるブログへ',style: TextStyle(color: Colors.white),),

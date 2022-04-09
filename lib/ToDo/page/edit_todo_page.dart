@@ -19,6 +19,7 @@ class _EditTodoPageState extends State<EditTodoPage> {
 
   String? title;
   String? description;
+  String? owner;
 
   @override
   void initState() {
@@ -31,7 +32,7 @@ class _EditTodoPageState extends State<EditTodoPage> {
   @override
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
-          title: Text('Edit Todo'),
+          title: Text('情報修正'),
           actions: [
             IconButton(
               icon: Icon(Icons.delete),
@@ -55,7 +56,9 @@ class _EditTodoPageState extends State<EditTodoPage> {
               onChangedTitle: (title) => setState(() => this.title = title),
               onChangedDescription: (description) =>
                   setState(() => this.description = description),
-              onSavedTodo: saveTodo,
+              onChangedOwner: (owner) =>
+                setState(() => this.owner = owner),
+                onSavedTodo: saveTodo,
             ),
           ),
         ),
@@ -69,7 +72,7 @@ class _EditTodoPageState extends State<EditTodoPage> {
     } else {
       final provider = Provider.of<TodosProvider>(context, listen: false);
 
-      provider.updateTodo(widget.todo, title!, description!);
+      provider.updateTodo(widget.todo, title!, description!,owner!);
 
       Navigator.of(context).pop();
     }

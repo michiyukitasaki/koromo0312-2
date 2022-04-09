@@ -9,6 +9,7 @@ class TodoField {
 class Todo {
   DateTime createdTime;
   String title;
+  String owner;
   String? id;
   String description;
   bool isDone;
@@ -17,6 +18,7 @@ class Todo {
     required this.createdTime,
     required this.title,
     this.description = '',
+    this.owner = '',
     this.id,
     this.isDone = false,
   });
@@ -25,6 +27,7 @@ class Todo {
         createdTime: Utils.toDateTime(json['createdTime'])!,
         title: json['title'],
         description: json['description'],
+        owner: json['owner'],
         id: json['id'],
         isDone: json['isDone'],
       );
@@ -33,6 +36,7 @@ class Todo {
         'createdTime': Utils.fromDateTimeToJson(createdTime),
         'title': title,
         'description': description,
+        'owner':owner,
         'id': id,
         'isDone': isDone,
       };

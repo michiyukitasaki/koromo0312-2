@@ -11,6 +11,8 @@ import 'package:instagram_clone_flutter/widgets/like_animation.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
+import '../screens/good_screen.dart';
+
 class PostCard extends StatefulWidget {
   final snap;
   const PostCard({
@@ -40,14 +42,16 @@ class _PostCardState extends State<PostCard> {
           .doc(widget.snap['postId'])
           .collection('comments')
           .get();
-      commentLen = snap.docs.length;
+      setState(() {
+        commentLen = snap.docs.length;
+      });
     } catch (err) {
       showSnackBar(
         context,
         err.toString(),
       );
     }
-    setState(() {});
+
   }
 
   deletePost(String postId) async {
@@ -272,9 +276,25 @@ class _PostCardState extends State<PostCard> {
                     child: Row(
                       children: [
                         Text(
-                          '${widget.snap['likes'].length} likes',
-                          style: Theme.of(context).textTheme.bodyText2,
+                          ' ${widget.snap['likes'].length} likes',
+                          style: const TextStyle(
+                            fontSize: 16,
+                            color: secondaryColor,
+                          ),
                         ),
+                        // InkWell(
+                        //   child: Container(
+                        //     child:
+                        //     padding: const EdgeInsets.symmetric(vertical: 4),
+                        //   ),
+                        //   onTap: () => Navigator.of(context).push(
+                        //     MaterialPageRoute(
+                        //       builder: (context) => GoodScreen(
+                        //         postId: widget.snap['postId'].toString(),
+                        //       ),
+                        //     ),
+                        //   ),
+                        // ),
                         SizedBox(
                           width: 16,
                         ),

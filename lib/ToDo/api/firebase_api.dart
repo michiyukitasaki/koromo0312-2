@@ -5,7 +5,7 @@ import '../utils.dart';
 
 class FirebaseApi {
   static Future<String>? createTodo(Todo todo) async {
-    final docTodo = FirebaseFirestore.instance.collection('todo').doc();
+    final docTodo = FirebaseFirestore.instance.collection('dogfriends').doc();
 
     todo.id = docTodo.id;
     await docTodo.set(todo.toJson());
@@ -14,19 +14,19 @@ class FirebaseApi {
   }
 
   static Stream<List<Todo>>? readTodos() => FirebaseFirestore.instance
-      .collection('todo')
+      .collection('dogfriends')
       .orderBy(TodoField.createdTime, descending: true)
       .snapshots()
       .transform(Utils.transformer(Todo.fromJson));
 
   static Future updateTodo(Todo todo) async {
-    final docTodo = FirebaseFirestore.instance.collection('todo').doc(todo.id);
+    final docTodo = FirebaseFirestore.instance.collection('dogfriends').doc(todo.id);
 
     await docTodo.update(todo.toJson());
   }
 
   static Future deleteTodo(Todo todo) async {
-    final docTodo = FirebaseFirestore.instance.collection('todo').doc(todo.id);
+    final docTodo = FirebaseFirestore.instance.collection('dogfriends').doc(todo.id);
 
     await docTodo.delete();
   }

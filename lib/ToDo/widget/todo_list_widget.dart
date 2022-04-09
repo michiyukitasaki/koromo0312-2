@@ -13,7 +13,7 @@ class TodoListWidget extends StatelessWidget {
     return todos.isEmpty
         ? Center(
             child: Text(
-              'No todos.',
+              '友達はいません.',
               style: TextStyle(fontSize: 20),
             ),
           )

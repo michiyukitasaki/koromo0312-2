@@ -26,7 +26,19 @@ class _ToDoHomePageState extends State<ToDoHomePage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('ToDoリスト'),
+        title: Text('犬友リスト'),
+        // bottom: PreferredSize(
+        //     child: Container(
+        //       child: Column(
+        //         children: [
+        //           Text('左にスライドで編集'),
+        //           Text('右にスライドで削除')
+        //         ],
+        //       ),
+        //       height: 50, //高さ
+        //       color: Colors.brown[400], //色
+        //     ),
+        //     preferredSize: Size.fromHeight(5)),//高さ
         backgroundColor: Colors.brown,
       ),
       bottomNavigationBar: BottomNavigationBar(
@@ -40,12 +52,12 @@ class _ToDoHomePageState extends State<ToDoHomePage> {
         }),
         items: [
           BottomNavigationBarItem(
-            icon: Icon(Icons.fact_check_outlined),
-            label: 'Todoリスト',
+            icon: Icon(Icons.near_me),
+            label: '多摩川付近',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.done, size: 28),
-            label: '完了リスト',
+            icon: Icon(Icons.near_me_disabled, size: 28),
+            label: 'それ以外',
           ),
         ],
       ),

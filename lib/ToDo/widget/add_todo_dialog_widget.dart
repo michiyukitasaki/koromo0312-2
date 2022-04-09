@@ -14,6 +14,7 @@ class _AddTodoDialogWidgetState extends State<AddTodoDialogWidget> {
   final _formKey = GlobalKey<FormState>();
   String title = '';
   String description = '';
+  String owner = '';
 
   @override
   Widget build(BuildContext context) => AlertDialog(
@@ -24,7 +25,7 @@ class _AddTodoDialogWidgetState extends State<AddTodoDialogWidget> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'Add Todo',
+                '犬友追加',
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 22,
@@ -35,6 +36,7 @@ class _AddTodoDialogWidgetState extends State<AddTodoDialogWidget> {
                 onChangedTitle: (title) => setState(() => this.title = title),
                 onChangedDescription: (description) =>
                     setState(() => this.description = description),
+                onChangedOwner: (owener)=>this.owner =owener,
                 onSavedTodo: addTodo,
               ),
             ],
@@ -52,6 +54,7 @@ class _AddTodoDialogWidgetState extends State<AddTodoDialogWidget> {
         id: DateTime.now().toString(),
         title: title,
         description: description,
+        owner: owner,
         createdTime: DateTime.now(),
       );
 

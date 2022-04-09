@@ -11,7 +11,7 @@ class MobileScreenLayout extends StatefulWidget {
 }
 
 class _MobileScreenLayoutState extends State<MobileScreenLayout> {
-  int _page = 3;
+  int _page = 4;
   late PageController pageController; // for tabs animation
 
   @override
@@ -51,7 +51,7 @@ class _MobileScreenLayoutState extends State<MobileScreenLayout> {
           BottomNavigationBarItem(
             icon: Icon(
               Icons.favorite,
-              color: (_page == 3) ? primaryColor : secondaryColor,
+              color: (_page == 0) ? primaryColor : secondaryColor,
             ),
             label: 'ころもについて',
             backgroundColor: primaryColor,
@@ -60,14 +60,14 @@ class _MobileScreenLayoutState extends State<MobileScreenLayout> {
             label:'写真',
             icon: Icon(
               Icons.image_outlined,
-              color: (_page == 0) ? primaryColor : secondaryColor,
+              color: (_page == 1) ? primaryColor : secondaryColor,
             ),
             backgroundColor: brownColor,
           ),
           BottomNavigationBarItem(
               icon: Icon(
                 Icons.video_collection_sharp,
-                color: (_page == 1) ? primaryColor : secondaryColor,
+                color: (_page == 2) ? primaryColor : secondaryColor,
               ),
               label: '動画',
               backgroundColor: primaryColor,
@@ -75,16 +75,16 @@ class _MobileScreenLayoutState extends State<MobileScreenLayout> {
           BottomNavigationBarItem(
               icon: Icon(
                 Icons.menu_book,
-                color: (_page == 2) ? primaryColor : secondaryColor,
+                color: (_page == 3) ? primaryColor : secondaryColor,
               ),
               label: 'メニュー',
               backgroundColor: primaryColor),
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.newspaper,
+              Icons.list_alt,
               color: (_page == 4) ? primaryColor : secondaryColor,
             ),
-            label: '最新ニュース',
+            label: '犬友リスト',
             backgroundColor: primaryColor,
           ),
         ],

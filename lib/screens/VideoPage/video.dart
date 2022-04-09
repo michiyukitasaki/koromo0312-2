@@ -11,7 +11,7 @@ class Video {
   String caption;
   String videoUrl;
   String thumbnail;
-  DateTime fromDate;
+  Timestamp fromDate;
   // String profilePhoto;
 
   Video({
@@ -59,7 +59,8 @@ class Video {
       videoUrl: snapshot['videoUrl'],
       // profilePhoto: snapshot['profilePhoto'],
       thumbnail: snapshot['thumbnail'],
-      fromDate: snapshot['fromDate'].toDate()
+      // fromDate: snapshot['fromDate'].toDate()
+        fromDate: snapshot['fromDate']
     );
   }
 }
