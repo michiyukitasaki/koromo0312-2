@@ -20,5 +20,5 @@ List<Widget> homeScreenItems = [
   const FeedScreen(),
   VideoScreen(),
   MyDrawer(),
-  // ToDoHomePage()
+  ToDoHomePage()
 ];

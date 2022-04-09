@@ -79,14 +79,14 @@ class _MobileScreenLayoutState extends State<MobileScreenLayout> {
               ),
               label: 'メニュー',
               backgroundColor: primaryColor),
-          // BottomNavigationBarItem(
-          //   icon: Icon(
-          //     Icons.list_alt,
-          //     color: (_page == 4) ? primaryColor : secondaryColor,
-          //   ),
-          //   label: '犬友リスト',
-          //   backgroundColor: primaryColor,
-          // ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.list_alt,
+              color: (_page == 4) ? primaryColor : secondaryColor,
+            ),
+            label: '犬友リスト',
+            backgroundColor: primaryColor,
+          ),
         ],
         onTap: navigationTapped,
         currentIndex: _page,
