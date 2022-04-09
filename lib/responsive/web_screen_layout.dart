@@ -81,13 +81,13 @@ class _WebScreenLayoutState extends State<WebScreenLayout> {
             onPressed: () => navigationTapped(3),
           ),
 
-          IconButton(
-            icon: Icon(
-              Icons.newspaper_outlined,
-              color: _page == 4 ? primaryColor : secondaryColor,
-            ),
-            onPressed: () => navigationTapped(4),
-          ),
+          // IconButton(
+          //   icon: Icon(
+          //     Icons.newspaper_outlined,
+          //     color: _page == 4 ? primaryColor : secondaryColor,
+          //   ),
+          //   onPressed: () => navigationTapped(4),
+          // ),
         ],
       ),
       body: PageView(
