@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../api/firebase_api.dart';
-import '../main.dart';
 import '../model/todo.dart';
 import '../provider/todos.dart';
 import '../widget/add_todo_dialog_widget.dart';
