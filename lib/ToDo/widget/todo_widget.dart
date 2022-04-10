@@ -67,10 +67,10 @@ class TodoWidget extends StatelessWidget {
                       Provider.of<TodosProvider>(context, listen: false);
                       final isDone = provider.toggleTodoStatus(todo);
 
-                      Utils.showSnackBar(
-                        context,
-                        isDone ? '多摩川付近' : 'それ以外',
-                      );
+                      // Utils.showSnackBar(
+                      //   context,
+                      //   isDone ? '多摩川付近' : 'それ以外',
+                      // );
                     },
                   ),
                   Text('多摩川付近'),
@@ -119,7 +119,7 @@ class TodoWidget extends StatelessWidget {
     final provider = Provider.of<TodosProvider>(context, listen: false);
     provider.removeTodo(todo);
 
-    Utils.showSnackBar(context, '友達削除');
+    // Utils.showSnackBar(context, '友達削除');
   }
 
   void editTodo(BuildContext context, Todo todo) => Navigator.of(context).push(
