@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>340645375939-m4tbksf7ii2bd2khmbrp6jslt5nnad03.apps.googleusercontent.com</string>
+	<string>340645375939-bg2oom7epkkm70h3pdjgc3rk43uq9k1v.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.340645375939-m4tbksf7ii2bd2khmbrp6jslt5nnad03</string>
+	<string>com.googleusercontent.apps.340645375939-bg2oom7epkkm70h3pdjgc3rk43uq9k1v</string>
 	<key>API_KEY</key>
 	<string>AIzaSyD4bJ-StdV9EaxRnhxofjkQxZLt9ypqiMo</string>
 	<key>GCM_SENDER_ID</key>
@@ -13,7 +13,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.example.koromo0310</string>
+	<string>com.0410.koromo0310</string>
 	<key>PROJECT_ID</key>
 	<string>imagetotext0226</string>
 	<key>STORAGE_BUCKET</key>
@@ -29,6 +29,8 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:340645375939:ios:12d94aef7a6142c561d776</string>
+	<string>1:340645375939:ios:aee7013b7befa1cb61d776</string>
+	<key>DATABASE_URL</key>
+	<string>https://imagetotext0226-default-rtdb.asia-southeast1.firebasedatabase.app</string>
 </dict>
 </plist>
